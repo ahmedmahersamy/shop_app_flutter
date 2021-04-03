@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "shop_app_flutter (Flutter Tests)",
+            "program": "test",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}
