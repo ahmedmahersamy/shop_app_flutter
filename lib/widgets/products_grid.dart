@@ -5,18 +5,23 @@ import '../providers/products_provider.dart';
 import '../widgets/product_item.dart';
 
 class ProductGridView extends StatelessWidget {
+  final  favoriteItem;
+  ProductGridView(this.favoriteItem);
   @override
   Widget build(BuildContext context) {
     final productData = Provider.of<Products>(context);
-    final products = productData.items;
-    print(products);
+    print("$favoriteItem from grid clever");
+    final products = this.favoriteItem? productData.favoriteItems : productData.items;
+    //print(products);
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
       itemCount: products.length,
-      itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-        value: products[i],
+       itemBuilder: (ctx, i) => ChangeNotifierProvider.value(value: products[i],
+       /*we used change notifier provider if we need to use or send the context if not we can use it with .value */
+       /*ChangeNotifierProvider(
+         create: (c) => products[i],
 
-        //  create: (c) => products[i],
+          create: (c) => products[i],*/
         child: ProductItem(
             // id: products[i].id,
             // title: products[i].title,
